@@ -11,8 +11,6 @@ import java.util.Random;
 
 public class Metodos {
 
-	// private static final String RandomStringUtils = null;
-	// Criamos um objeto do tipo WebDriver chamado driver
 	public static WebDriver driver;
 
 	/**

@@ -3,11 +3,12 @@ package tests;
 import static org.junit.Assert.assertEquals;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pages.Metodos;
 
 public class CreateAccount extends Metodos {
-
+	WebDriverWait wait;
 	Metodos metodo = new Metodos();
 
 	By user = By.xpath(".//*[@id='menuUser']");
@@ -34,21 +35,24 @@ public class CreateAccount extends Metodos {
 	String usuario;
 
 	public void criarConta(String email, String password, String confirmPassword, String firstName, String lastName,
-			String phoneNumber, String country, String city, String adress, String province, String postalCode) {
+			String phoneNumber, String country, String city, String adress, String province, String postalCode)
+			throws InterruptedException {
 
 		this.usuario = metodo.getNome();
 
 		// clicando no botão user
-		metodo.pausa(5000, "esperando o botão user ficar acessível");
+		metodo.esperarElemento(user, "");
 		metodo.clicar(user, "clicar em user para criar a nova conta");
 
 		// clicando no menu para abrir conta
-		metodo.pausa(2000, "");
+		metodo.esperarElemento(createAccount, "");
 		metodo.clicar(createAccount, "clicando no menu create a new account");
-		metodo.pausa(2000, postalCode);
-		
+		metodo.esperarElemento(createAccount, "");
+
 		// preencher o formulario de abertura de conta
-		metodo.pausa(2000, "esperando o botão user ficar acessível"); 
+		
+		metodo.esperarElemento(userName, "");
+
 		metodo.escrever(this.userName, this.usuario, "preencher o campo nome");
 		metodo.escrever(this.email, email, "");
 		metodo.escrever(this.password, password, "");
@@ -61,29 +65,27 @@ public class CreateAccount extends Metodos {
 		metodo.escrever(this.province, province, "");
 		metodo.escrever(this.postalCode, postalCode, "");
 
-		metodo.pausa(1000, "");
+		metodo.esperarElemento(concordo, "");
 
 		metodo.clicar(concordo, "");
 
-		metodo.pausa(1000, "");
+		metodo.esperarElemento(register, "");
 
 		metodo.clicar(register, "");
-		
 
 	}
 
-	public void validarUser() {
-		
-		String loginName = driver.findElement(By.cssSelector("#menuUserLink > span")).getText();
+	public void validarUser() throws InterruptedException {
 
-		metodo.pausa(3000, "");
+		String loginName = driver.findElement(By.xpath("//a[@id='hrefUserIcon']")).getText();
+
 
 		System.out.println("O nome retornado é: " + loginName);
 
 		System.out.println("**********************************************************");
-		
+
 		assertEquals(this.usuario, loginName);
-		
+
 		metodo.fechar("******************* FINALIZANDO O CADASTRO*********************");
 	}
 
