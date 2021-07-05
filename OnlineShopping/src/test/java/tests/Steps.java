@@ -37,13 +37,13 @@ public class Steps {
 
 	@Then("cadastro realizada com sucesso")
 	public void cadastro_realizada_com_sucesso() {
-		System.out.println("**********************************************************");; // PARA ORGANIZAR O CONSOLE
+		System.out.println("**********************************************************"); // PARA ORGANIZAR O CONSOLE
 		
 		metodo.pausa(3000, null);
 		account.validarUser();
 		metodo.pausa(3000, null);
 		
-		System.out.println("**********************************************************");; // PARA ORGANIZAR O CONSOLE
+		System.out.println("**********************************************************"); // PARA ORGANIZAR O CONSOLE
 	}
 	
 

@@ -27,7 +27,7 @@ public class Metodos {
 
 		try {
 			if (navegador == "CHROME") {
-				System.setProperty("webdriver.chrome.driver", "D:\\Drivers\\chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver", ".//DriversChrome/chromedriver.exe");
 				driver = new ChromeDriver();
 				driver.get(site);
 			} else if (navegador == "FIREFOX") {

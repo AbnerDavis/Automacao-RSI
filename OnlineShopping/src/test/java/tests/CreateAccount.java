@@ -10,26 +10,26 @@ public class CreateAccount extends Metodos {
 
 	Metodos metodo = new Metodos();
 
-	By user = By.id("menuUser");
+	By user = By.xpath(".//*[@id='menuUser']");
 
-	By createAccount = By.xpath("//a[contains(text(),\"CREATE NEW ACCOUNT\")]");
+	By createAccount = By.xpath("//a[@href='javascript:void(0)' and @class='create-new-account ng-scope']");
 
-	By userName = By.name("usernameRegisterPage");
-	By email = By.name("emailRegisterPage");
-	By password = By.name("passwordRegisterPage");
-	By confPassword = By.name("confirm_passwordRegisterPage");
-	By firstName = By.name("first_nameRegisterPage");
-	By lastName = By.name("last_nameRegisterPage");
-	By phone = By.name("phone_numberRegisterPage");
-	By country = By.name("countryListboxRegisterPage");
-	By city = By.name("cityRegisterPage");
-	By address = By.name("addressRegisterPage");
-	By province = By.name("state_/_province_/_regionRegisterPage");
-	By postalCode = By.name("postal_codeRegisterPage");
+	By userName = By.xpath("//input[@name='usernameRegisterPage' and @type='text']");
+	By email = By.xpath("//input[@name='emailRegisterPage' and @type='text']");
+	By password = By.xpath("//input[@name='passwordRegisterPage' and @type='password']");
+	By confirmPassword = By.xpath("//input[@name='confirm_passwordRegisterPage']");
+	By firstName = By.xpath("//input[@name='first_nameRegisterPage']");
+	By lastName = By.xpath("//input[@name='last_nameRegisterPage']");
+	By phone = By.xpath("//input[@name='phone_numberRegisterPage']");
+	By country = By.xpath("//select[@name='countryListboxRegisterPage']");
+	By city = By.xpath("//input[@name='cityRegisterPage']");
+	By address = By.xpath("//input[@name='addressRegisterPage']");
+	By province = By.xpath("//input[@name='state_/_province_/_regionRegisterPage']");
+	By postalCode = By.xpath("//input[@name='postal_codeRegisterPage']");
 
-	By promocoes = By.name("nanallowOffersPromotion");
-	By concordo = By.name("i_agree");
-	By register = By.id("register_btnundefined");
+	By promocoes = By.xpath("//input[@name='allowOffersPromotion']");
+	By concordo = By.xpath("//input[@name='i_agree']");
+	By register = By.xpath("//button[@id='register_btnundefined']");
 
 	String usuario;
 
@@ -52,7 +52,7 @@ public class CreateAccount extends Metodos {
 		metodo.escrever(this.userName, this.usuario, "preencher o campo nome");
 		metodo.escrever(this.email, email, "");
 		metodo.escrever(this.password, password, "");
-		metodo.escrever(this.confPassword, confirmPassword, "");
+		metodo.escrever(this.confirmPassword, confirmPassword, "");
 		metodo.escrever(this.firstName, firstName, "");
 		metodo.escrever(this.lastName, lastName, "");
 		metodo.escrever(this.country, country, "");
@@ -80,7 +80,10 @@ public class CreateAccount extends Metodos {
 
 		System.out.println("O nome retornado é: " + loginName);
 
+		System.out.println("**********************************************************");
+		
 		assertEquals(this.usuario, loginName);
+		
 		metodo.fechar("******************* FINALIZANDO O CADASTRO*********************");
 	}
 
