@@ -1,5 +1,7 @@
 package pages;
 
+import java.util.Random;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.util.Random;
 
 public class Metodos {
 
@@ -36,7 +37,7 @@ public class Metodos {
 				System.out.println("Opção inválida digitar CHROME ou FIREFOX");
 			}
 		} catch (Exception e) {
-			System.out.println("****** error ****** no passo " + descricao + " " + e);
+			System.out.println("****** error ****** no passo " + descricao + " " + e.getMessage());
 		}
 
 		driver.manage().window().maximize();
@@ -54,7 +55,7 @@ public class Metodos {
 		try {
 			driver.findElement(elemento).click();
 		} catch (Exception e) {
-			System.out.println("****** error ****** no passo " + descricao + " " + e);
+			System.out.println("****** error ****** no passo " + descricao + " " + e.getMessage());
 		}
 
 	}
@@ -72,7 +73,7 @@ public class Metodos {
 		try {
 			driver.findElement(elemento).sendKeys(texto);
 		} catch (Exception e) {
-			System.out.println("****** error ****** no passo " + descricao + " " + e);
+			System.out.println("****** error ****** no passo " + descricao + " " + e.getMessage());
 		}
 	}
 
@@ -88,7 +89,7 @@ public class Metodos {
 		try {
 			Thread.sleep(tempo);
 		} catch (InterruptedException e) {
-			System.out.println("****** error ****** no passo " + descricao + " " + e);
+			System.out.println("****** error ****** no passo " + descricao + " " + e.getMessage());
 		}
 
 	}
@@ -103,10 +104,11 @@ public class Metodos {
 	public void esperarElemento(By elemento, String descricao) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 10);
+
 			@SuppressWarnings("unused")
 			WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(elemento));
 		} catch (Exception e) {
-			System.out.println("****** error ****** no passo " + descricao + " " + e);
+			System.out.println("****** error ****** no passo " + descricao + " " + e.getMessage());
 		}
 	}
 
@@ -120,13 +122,19 @@ public class Metodos {
 		try {
 			driver.quit();
 		} catch (Exception e) {
-			System.out.println("****** error ****** no passo " + descricao + " " + e);
+			System.out.println("****** error ****** no passo " + descricao + " " + e.getMessage());
 		}
 	}
 
 	private static Random rand = new Random();
 	private static char[] letras = "abcdefghijlmnopqrstuvxz".toCharArray();
 
+	/**
+	 * Metodo responsavel por gerar letras aleatorias para usar como nome de usuario
+	 * 
+	 * @author AbnerDavis
+	 * @return
+	 */
 	public String getNome() {
 
 		StringBuffer generatedString = new StringBuffer();

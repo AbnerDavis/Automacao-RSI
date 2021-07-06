@@ -50,7 +50,7 @@ public class CreateAccount extends Metodos {
 		metodo.esperarElemento(createAccount, "");
 
 		// preencher o formulario de abertura de conta
-		
+
 		metodo.esperarElemento(userName, "");
 
 		metodo.escrever(this.userName, this.usuario, "preencher o campo nome");
@@ -77,15 +77,12 @@ public class CreateAccount extends Metodos {
 
 	public void validarUser() throws InterruptedException {
 
-		String loginName = driver.findElement(By.xpath("//a[@id='hrefUserIcon']")).getText();
+		String loginName = driver.findElement(By.xpath("//span[@data-ng-show='userCookie.response' and @class='hi-user containMiniTitle ng-binding']")).getText();
 
-
+		
 		System.out.println("O nome retornado é: " + loginName);
 
-		System.out.println("**********************************************************");
-
-		assertEquals(this.usuario, loginName);
-
+		assertEquals(usuario, loginName);
 		metodo.fechar("******************* FINALIZANDO O CADASTRO*********************");
 	}
 
